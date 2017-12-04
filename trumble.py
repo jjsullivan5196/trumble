@@ -11,13 +11,14 @@ URL_F = 'https://github.com/bpb27/trump_tweet_data_archive/raw/master/condensed_
 TWEET_YEARS = ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
 
 regex = re.compile(r'[\r\n\t]')
+hypertext = re.compile(r'http')
 
 def fix_tweets(fnames):
     tweets = []
     for fname in fnames:
         with open(fname) as fp:
             for msg in json.load(fp):
-                if msg['is_retweet']:
+                if msg['is_retweet'] or hypertext.search(msg['text']):
                     continue
                 text = regex.sub('', html.unescape(msg['text']))
                 tweets.append(text)
