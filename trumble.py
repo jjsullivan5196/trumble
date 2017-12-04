@@ -8,7 +8,7 @@ import re
 import numpy as np
 
 URL_F = 'https://github.com/bpb27/trump_tweet_data_archive/raw/master/condensed_{}.json.zip'
-TWEET_YEARS = ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+TWEET_YEARS = ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016']
 
 regex = re.compile(r'[\r\n\t]')
 hypertext = re.compile(r'http')
