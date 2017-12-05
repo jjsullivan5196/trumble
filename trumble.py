@@ -21,7 +21,7 @@ def fix_tweets(fnames):
                 if msg['is_retweet'] or hypertext.search(msg['text']):
                     continue
                 text = regex.sub('', html.unescape(msg['text']))
-                tweets.append(text)
+                tweets.append([text[x] if x < len(text) else '\0' for x in range(140)])
     return np.array(tweets)
 
 def collect_tweets(download = True, years = TWEET_YEARS, dl_years = TWEET_YEARS):
